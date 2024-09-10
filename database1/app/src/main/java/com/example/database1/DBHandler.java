@@ -86,4 +86,15 @@ public class DBHandler extends SQLiteOpenHelper{
         db.close();
         return result;
     }
+
+    public void update(String name,String course,int semester){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        //passing data as key-value pairs
+        values.put(NAME,name);
+        values.put(COURSE,course);
+        values.put(SEMESTER,semester);
+        db.update(TABLE_NAME,values,NAME+ "= ?",new String[]{name});
+        db.close();
+    }
 }

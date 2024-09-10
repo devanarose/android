@@ -64,7 +64,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateStudent(View v){
-
+        String studentname = edit1.getText().toString();
+        String studentCourse = edit2.getText().toString();
+        int studentsemester = Integer.parseInt(edit3.getText().toString());
+        dbHandler.update(studentname,studentCourse,studentsemester);
+        Toast.makeText(MainActivity.this,"UPDATED SUCCESSFULLY!",Toast.LENGTH_LONG).show();
+        edit3.setText("");
+        edit2.setText("");
+        edit1.setText("");
     }
 }
 
