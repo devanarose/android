@@ -65,9 +65,30 @@
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
-            android:layout_height="72dp"
+            android:layout_height="59dp"
             android:onClick="addStudent"
             android:text="ADD THE STUDENT" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="findStudent"
+            android:text="FIND STUDENT BY NAME" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="deleteStudent"
+            android:text="DELETE STUDENT" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="updateStudent"
+            android:text="UPDATE STUDENT DETAILS" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,4 +37,8 @@ public class MainActivity extends AppCompatActivity {
         edit2.setText("");
         edit3.setText("");
     }
+    public void findStudent(View v){
+
+    }
 }
+
