@@ -53,7 +53,7 @@ public class DBHandler extends SQLiteOpenHelper{
         //db.close();
     }
     public Student searchStudent(String studentname){ //student data model
-        SQLiteDatabase db = this.getWritableDatabase(); //opening database
+        SQLiteDatabase db = this.getWritableDatabase(); //opening database with write permission
         Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME+" where "+NAME+" = ?",new String[]{studentname}); //method for executing sql queries
         Student student = new Student(); //object for data model Student
         if (cursor.moveToFirst()) // point to first matching record among multiple records. means there is existing matching record
@@ -70,5 +70,20 @@ public class DBHandler extends SQLiteOpenHelper{
         }
         db.close();
         return student;
+    }
+
+    public boolean delete(String studentname){
+        boolean result = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME+" where "+NAME+" = ?",new String[]{studentname});
+        Student student = new Student();
+        if (cursor.moveToFirst()){
+            student.setId(Integer.parseInt(cursor.getString(0)));
+            db.delete(TABLE_NAME, ID+ "= ?",new String[]{String.valueOf(student.getId())});
+            cursor.close();
+            return result = true;
+        }
+        db.close();
+        return result;
     }
 }

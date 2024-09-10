@@ -38,11 +38,29 @@ public class MainActivity extends AppCompatActivity {
         edit3.setText("");
     }
     public void findStudent(View v){
-
+        String studentName=edit1.getText().toString();
+        Student student = dbHandler.searchStudent(studentName);
+        if(student!=null){
+            edit2.setText(String.valueOf(student.getCourse()));
+            edit3.setText((String.valueOf(student.getSemester())));
+        }
+        else {
+            Toast.makeText(MainActivity.this,"no match found!",Toast.LENGTH_LONG).show();
+        }
     }
 
     public void deleteStudent(View v){
-
+        String studentName=edit1.getText().toString();
+        boolean result = dbHandler.delete(studentName);
+        if(result){
+            Toast.makeText(MainActivity.this,"Deletion has occurred!",Toast.LENGTH_LONG).show();
+            edit3.setText("");
+            edit2.setText("");
+            edit1.setText("");
+        }
+        else{
+            Toast.makeText(MainActivity.this,"No match found!",Toast.LENGTH_LONG).show();
+        }
     }
 
     public void updateStudent(View v){
