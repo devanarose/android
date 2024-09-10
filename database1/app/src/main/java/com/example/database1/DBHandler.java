@@ -52,4 +52,23 @@ public class DBHandler extends SQLiteOpenHelper{
         db.insert(TABLE_NAME,null,values);
         //db.close();
     }
+    public Student searchStudent(String studentname){ //student data model
+        SQLiteDatabase db = this.getWritableDatabase(); //opening database
+        Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME+" where "+NAME+" = ?",new String[]{studentname}); //method for executing sql queries
+        Student student = new Student(); //object for data model Student
+        if (cursor.moveToFirst()) // point to first matching record among multiple records. means there is existing matching record
+        {
+            cursor.moveToFirst();
+            student.setId(Integer.parseInt(cursor.getString(0)));
+            student.setName(cursor.getString(1)); //2nd column of matching record... and that is set as name
+            student.setCourse(cursor.getString(2));
+            student.setSemester(Integer.parseInt(cursor.getString(3)));
+            cursor.close();
+        }
+        else{
+            student = null;
+        }
+        db.close();
+        return student;
+    }
 }

@@ -40,5 +40,13 @@ public class MainActivity extends AppCompatActivity {
     public void findStudent(View v){
 
     }
+
+    public void deleteStudent(View v){
+
+    }
+
+    public void updateStudent(View v){
+
+    }
 }
 
